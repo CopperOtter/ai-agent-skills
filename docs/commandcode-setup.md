@@ -9,29 +9,29 @@ The Command Code binary is available as `cmd` (with aliases `cmdc` on Windows an
 **Project scope** (installs into `.commandcode/skills/` at the current git root — the default):
 
 ```bash
-cmd skills add addyosmani/agent-skills
+cmd skills add 189nethuwa/ai-agent-skills
 ```
 
-In an interactive terminal this shows a multi-select so you can choose which of the 25 skills to install. Pipe/non-interactive invocations install all discovered skills.
+In an interactive terminal this shows a multi-select so you can choose which of the 26 skills to install. Pipe/non-interactive invocations install all discovered skills.
 
 **Install a specific skill:**
 
 ```bash
-cmd skills add addyosmani/agent-skills -s spec-driven-development
+cmd skills add 189nethuwa/ai-agent-skills -s spec-driven-development
 ```
 
 **User scope** (installs into `~/.commandcode/skills/`, available in every project):
 
 ```bash
-cmd skills add addyosmani/agent-skills --global
+cmd skills add 189nethuwa/ai-agent-skills --global
 ```
 
 **Other supported forms:**
 
 ```bash
-cmd skills add addyosmani/agent-skills@main            # a specific branch
-cmd skills add addyosmani/agent-skills/skills/interview-me   # a specific path in the repo
-cmd skills add addyosmani/agent-skills --force         # overwrite / update if already installed
+cmd skills add 189nethuwa/ai-agent-skills@main            # a specific branch
+cmd skills add 189nethuwa/ai-agent-skills/skills/interview-me   # a specific path in the repo
+cmd skills add 189nethuwa/ai-agent-skills --force         # overwrite / update if already installed
 ```
 
 ## Manage

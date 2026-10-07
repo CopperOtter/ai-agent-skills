@@ -19,6 +19,8 @@ Skills encode the workflows, quality gates, and best practices that senior engin
 
 ---
 
+For a practical walkthrough using your version of the pack, including Claude Code, Codex, OpenCode, and existing .NET/SQL projects, read the **[practical agent-work manual](docs/practical-agent-work.md)**.
+
 ## Commands
 
 9 slash commands that map to the development lifecycle. Each one activates the right skills automatically.
@@ -46,16 +48,16 @@ Skills also activate automatically based on what you're doing — designing an A
 **Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):
 
 ```bash
-npx skills add addyosmani/agent-skills            # install all 25 skills
-npx skills add addyosmani/agent-skills --list     # browse before installing
+npx skills add 189nethuwa/ai-agent-skills            # install all 26 skills
+npx skills add 189nethuwa/ai-agent-skills --list     # browse before installing
 ```
 
 Or grab individual skills:
 
 ```bash
-npx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge
-npx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time
-npx skills add addyosmani/agent-skills --skill test-driven-development   # red-green-refactor, enforced
+npx skills add 189nethuwa/ai-agent-skills --skill code-review-and-quality   # five-axis review before merge
+npx skills add 189nethuwa/ai-agent-skills --skill interview-me              # requirements interrogation, one question at a time
+npx skills add 189nethuwa/ai-agent-skills --skill test-driven-development   # red-green-refactor, enforced
 ```
 
 > **Installing one skill?** A per-skill `npx` install copies only
@@ -73,13 +75,13 @@ Prefer a native integration? Pick your tool below.
 **Marketplace install:**
 
 ```
-/plugin marketplace add addyosmani/agent-skills
+/plugin marketplace add 189nethuwa/ai-agent-skills
 /plugin install agent-skills@addy-agent-skills
 ```
 
 > **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or use the full HTTPS URL to force HTTPS cloning during the marketplace-add step:
 > ```bash
-> /plugin marketplace add https://github.com/addyosmani/agent-skills.git
+> /plugin marketplace add https://github.com/189nethuwa/ai-agent-skills.git
 > /plugin install agent-skills@addy-agent-skills
 > ```
 >
@@ -91,7 +93,7 @@ Prefer a native integration? Pick your tool below.
 **Local / development:**
 
 ```bash
-git clone https://github.com/addyosmani/agent-skills.git
+git clone https://github.com/189nethuwa/ai-agent-skills.git
 claude --plugin-dir /path/to/agent-skills
 ```
 
@@ -112,13 +114,13 @@ Install as a native plugin for skills and subagents. In affected Antigravity CLI
 **Install from the repo:**
 
 ```bash
-agy plugin install https://github.com/addyosmani/agent-skills.git
+agy plugin install https://github.com/189nethuwa/ai-agent-skills.git
 ```
 
 **Install from a local clone:**
 
 ```bash
-git clone https://github.com/addyosmani/agent-skills.git
+git clone https://github.com/189nethuwa/ai-agent-skills.git
 agy plugin install ./agent-skills
 ```
 
@@ -132,7 +134,7 @@ Install as native skills for auto-discovery, or add to `GEMINI.md` for persisten
 **Install from the repo:**
 
 ```bash
-gemini skills install https://github.com/addyosmani/agent-skills.git --path skills
+gemini skills install https://github.com/189nethuwa/ai-agent-skills.git --path skills
 ```
 
 **Install from a local clone:**
@@ -179,7 +181,7 @@ Using the standalone `copilot` CLI? Install it as a plugin — see [docs/copilot
 Install as a native Codex plugin (Codex CLI v0.122+):
 
 ```bash
-codex plugin marketplace add addyosmani/agent-skills
+codex plugin marketplace add 189nethuwa/ai-agent-skills
 codex plugin add agent-skills@agent-skills
 ```
 
@@ -219,9 +221,9 @@ Already installed? How you roll the pack out depends on your codebase. The **[Ad
 
 ---
 
-## All 25 Skills
+## All 26 Skills
 
-The commands above are entry points. The pack includes 25 skills total — 24 lifecycle skills plus the `using-agent-skills` meta-skill. Each skill is a structured workflow with steps, verification gates, and anti-rationalization tables. You can also reference any skill directly.
+The commands above are entry points. The pack includes 26 skills total — 25 lifecycle skills plus the `using-agent-skills` meta-skill. Each skill is a structured workflow with steps, verification gates, and anti-rationalization tables. You can also reference any skill directly.
 
 ### Meta - Discover which skill applies
 
@@ -250,6 +252,7 @@ The commands above are entry points. The pack includes 25 skills total — 24 li
 |-------|-------------|----------|
 | [incremental-implementation](skills/incremental-implementation/SKILL.md) | Thin vertical slices - implement, test, verify, commit. Feature flags, safe defaults, rollback-friendly changes | Any change touching more than one file |
 | [test-driven-development](skills/test-driven-development/SKILL.md) | Red-Green-Refactor, test pyramid (80/15/5), test sizes, DAMP over DRY, Beyonce Rule, browser testing | Implementing logic, fixing bugs, or changing behavior |
+| [codebase-rules-extraction](skills/codebase-rules-extraction/SKILL.md) | Trace dependencies down and back up; extract scoped, evidence-backed rules and a restartable knowledge base | Understanding a complex or legacy project before sustained agent work |
 | [context-engineering](skills/context-engineering/SKILL.md) | Feed agents the right information at the right time - rules files, context packing, MCP integrations | Starting a session, switching tasks, or when output quality drops |
 | [source-driven-development](skills/source-driven-development/SKILL.md) | Ground every framework decision in official documentation - verify, cite sources, flag what's unverified | You want authoritative, source-cited code for any framework or library |
 | [doubt-driven-development](skills/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision in-flight - CLAIM → EXTRACT → DOUBT → RECONCILE → STOP, with optional user-authorized cross-model escalation | Stakes are high (production, security, irreversible), working in unfamiliar code, or a confident output is cheaper to verify now than to debug later |
@@ -353,14 +356,14 @@ The portable core stays in shared directories. Host-specific paths are native di
 
 | Layer / consumer | Repository paths | Purpose |
 |---|---|---|
-| Shared workflow core | `skills/` (25 skills) | Portable `SKILL.md` workflows used by every integration |
+| Shared workflow core | `skills/` (26 skills) | Portable `SKILL.md` workflows used by every integration |
 | Shared review material | `agents/` (4 personas), `references/` (7 checklists) | Specialist reviewers and pack-level checklists carried by whole-repo installs |
 | Claude Code adapter | `.claude/commands/` (9 commands), `.claude-plugin/`, `hooks/` | Slash-command wrappers, marketplace metadata, and lifecycle hooks |
 | Gemini CLI adapter | `.gemini/commands/` (9 commands) | Gemini-native TOML command wrappers |
 | Antigravity CLI adapter | `commands/` (9 commands), `plugin.json` | Legacy TOML wrappers and the root plugin manifest; see the [known wrapper limitation](docs/antigravity-setup.md#lifecycle-workflows-and-command-compatibility) |
 | Codex adapter | `.codex-plugin/`, `.agents/plugins/` | Codex plugin metadata and marketplace registration; Codex consumes `skills/` directly |
 | GitHub Copilot CLI adapter | `plugin.json` | Root plugin metadata; Copilot CLI discovers `skills/` by convention and does not register the lifecycle wrappers |
-| Contributor tooling | `scripts/` (13 scripts), `evals/` (25 case files), `.github/workflows/` | Validation, routing evals, and CI |
+| Contributor tooling | `scripts/` (13 scripts), `evals/` (26 case files), `.github/workflows/` | Validation, routing evals, and CI |
 | Documentation | `docs/` | Universal guidance and per-tool setup guides |
 
 Tools without a checked-in adapter directory install or copy the shared `skills/` core into their own native location. The [Quick Start](#quick-start) links the setup guide for each supported host.

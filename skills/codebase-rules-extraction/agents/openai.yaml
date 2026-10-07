@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codebase Rules Extraction"
+  short_description: "Map dependencies and extract evidence-backed project rules"
+  default_prompt: "Use $codebase-rules-extraction to map this project and create a reusable, evidence-backed codebase guide for future agents."

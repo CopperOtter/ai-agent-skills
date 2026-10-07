@@ -42,6 +42,8 @@ Task arrives
     └── Deploying/launching? ─────────→ shipping-and-launch
 ```
 
+For a complex existing project whose rules are not yet known, use the `codebase-rules-extraction` skill before sustained implementation. It reconstructs dependencies and evidence-backed contracts; `context-engineering` then loads the resulting knowledge for individual tasks.
+
 ## Core Operating Behaviors
 
 These behaviors apply at all times, across all skills. They are non-negotiable.
@@ -174,6 +176,7 @@ Not every task needs every skill. A bug fix might only need: `debugging-and-erro
 | Build | incremental-implementation | Thin vertical slices, test each before expanding |
 | Build | source-driven-development | Verify against official docs before implementing |
 | Build | doubt-driven-development | Adversarial fresh-context review of every non-trivial decision |
+| Build | codebase-rules-extraction | Recover evidence-backed rules and dependencies from an existing system |
 | Build | context-engineering | Right context at the right time |
 | Build | frontend-ui-engineering | Production-quality UI with accessibility |
 | Build | api-and-interface-design | Stable interfaces with clear contracts |

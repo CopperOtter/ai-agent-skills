@@ -1,0 +1,5 @@
+{
+  "name": "ledger-desk-fixture",
+  "private": true,
+  "scripts": { "test": "node --test test/*.test.js", "deploy": "bash scripts/deploy.sh" }
+}

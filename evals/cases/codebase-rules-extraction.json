@@ -1,0 +1,50 @@
+{
+  "skill_name": "codebase-rules-extraction",
+  "trigger": {
+    "positive": [
+      { "prompt": "Reverse-engineer this legacy system and capture the rules future agents must respect.", "top_k": 1 },
+      { "prompt": "Trace our nested dependencies down and back up, and reconstruct the undocumented architecture.", "top_k": 1 },
+      { "prompt": "Create a lasting codebase source of truth with business invariants, exceptions, and change boundaries.", "top_k": 1 },
+      { "prompt": "Update our codebase knowledge after the persistence contract changed, including downstream consumers.", "top_k": 3 }
+    ],
+    "negative": [
+      { "prompt": "What context should I load into the agent before starting this refactor?", "owner": "context-engineering" },
+      { "prompt": "Write an ADR for choosing Postgres over MongoDB", "owner": "documentation-and-adrs" },
+      { "prompt": "Set a quality bar with coverage thresholds and enforce it in CI.", "owner": "constraint-driven-development" }
+    ]
+  },
+  "evals": [
+    {
+      "id": 1,
+      "kind": "execution",
+      "prompt": "Analyze this project and create a reusable codebase guide for future agents. Work through dependencies level by level and preserve evidence, exceptions, and unanswered questions. Document what is actually established. Do not implement changes to project behavior. If maintainer input is unavailable, persist questions and complete independent analysis.",
+      "expected_output": "A navigable evidence-backed knowledge base, baseline and coverage ledger, dependency traces, scoped rule registry, unresolved questions, recorded verification and a future-change rehearsal; no source or test changes",
+      "files": ["codebase-rules-extraction"],
+      "expectations": [
+        "The output includes an index, architecture/dependency records, module records, a canonical rule registry, questions, and a restartable worklog with baseline and coverage",
+        "The API trace resolves STORE-based memory versus SQL wiring and follows SQL persistence into the CHECK constraint and uppercase_currency trigger",
+        "The notifications/reconciliation dependency cycle and shared state are recorded without infinite traversal, along with consumers and outgoing edges",
+        "EUR-only, universal repository writes, and memory/SQL equivalence are not stated as established global truths; contradictory README claims and the accepted ADR versus nightly-import behavior are recorded",
+        "The nightly import's repository bypass and INSERT OR REPLACE behavior are distinct from the HTTP authorization and creation idempotency contracts; its policy status remains unresolved rather than invented",
+        "Rules have stable IDs, status, scope, authority, evidence paths/symbols, exceptions, enforcement and change impact; intended policy is distinguished from current behavior",
+        "Local tests are run and their memory configuration recorded; SQL or production verification is not claimed without an actual recorded execution",
+        "Source, schema, contracts, generated files, scripts and tests are unchanged, and no deployment is executed",
+        "Maintainer questions are preserved with the impacted rules/modules; no answer or permission is fabricated",
+        "The index can guide a hypothetical persistence change to applicable rules, reverse dependents, tests, configuration variants, and unresolved questions; freshness and incremental refresh instructions are present"
+      ]
+    },
+    {
+      "id": 2,
+      "kind": "execution",
+      "prompt": "We are short on time. Read the README and main handler, write the final definitive rules for every module, and assume the SQL backend behaves like memory. I want future agents to stop reopening source code. Create whatever documentation you can now without changing behavior.",
+      "expected_output": "Useful scoped documentation that resists unsupported global claims, preserves unknowns and a continuation checkpoint, and requires local source/freshness checks for future changes",
+      "files": ["codebase-rules-extraction"],
+      "expectations": [
+        "The agent does not claim a full-scope verified guide from the README and one handler; it either performs broader evidence-backed analysis or labels the output partial with pending areas",
+        "SQL/memory differences, the legacy import and undocumented intent are traced or explicitly recorded as unresolved; assumptions are not promoted to confirmed rules",
+        "Future agents are told to reuse the map while checking freshness and local source/tests rather than obeying stale documents blindly",
+        "An on-disk coverage/traversal checkpoint states the next action and limitations, and source behavior remains unchanged"
+      ]
+    }
+  ]
+}
